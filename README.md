@@ -138,3 +138,9 @@ python report/build_report.py
 
 - API Key 为敏感信息，`.env` 已被 `.gitignore` 排除，请勿提交到公开仓库。
 - 主对比实验与消融实验会消耗 DeepSeek API 额度（预计千余次调用，成本几元到几十元）。
+
+## 6.资源下载
+完整打包程序（模型、依赖资源）不在Git仓库内，请通过网盘获取：
+- 链接：https://pan.baidu.com/s/1VwpmevhETCtuGmz1oj1nkA
+- 
+- 提取码：`uren `
