@@ -1,0 +1,47 @@
+{
+ "finqa": {
+  "n": 12,
+  "answer_accuracy": 0.6667,
+  "numerical_accuracy": 0.6667,
+  "code_exec_success": 1.0,
+  "task_success_rate": 1.0,
+  "avg_time": 2.78,
+  "avg_prompt_tokens": 1033.8,
+  "avg_completion_tokens": 153.0,
+  "avg_total_tokens": 1186.8,
+  "n_answer_correct": 8,
+  "n_numeric_correct": 8,
+  "n_code_ok": 12,
+  "n_task_ok": 12
+ },
+ "financemath": {
+  "n": 12,
+  "answer_accuracy": 0.8333,
+  "numerical_accuracy": 0.8333,
+  "code_exec_success": 1.0,
+  "task_success_rate": 1.0,
+  "avg_time": 2.96,
+  "avg_prompt_tokens": 229.2,
+  "avg_completion_tokens": 188.2,
+  "avg_total_tokens": 417.4,
+  "n_answer_correct": 10,
+  "n_numeric_correct": 10,
+  "n_code_ok": 12,
+  "n_task_ok": 12
+ },
+ "overall": {
+  "n": 24,
+  "answer_accuracy": 0.75,
+  "numerical_accuracy": 0.75,
+  "code_exec_success": 1.0,
+  "task_success_rate": 1.0,
+  "avg_time": 2.87,
+  "avg_prompt_tokens": 631.5,
+  "avg_completion_tokens": 170.6,
+  "avg_total_tokens": 802.1,
+  "n_answer_correct": 18,
+  "n_numeric_correct": 18,
+  "n_code_ok": 24,
+  "n_task_ok": 24
+ }
+}

@@ -1,0 +1,386 @@
+[
+ {
+  "id": "finqa_CME/2012/page_70.pdf-4-662",
+  "dataset": "finqa",
+  "question": "by what percentage can cme increase their current line of credit?",
+  "gold": 0.4,
+  "gold_str": "40.0%",
+  "answer": 40.0,
+  "code_success": true,
+  "elapsed": 3.89,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 1982,
+   "completion_tokens": 64,
+   "total_tokens": 2046
+  }
+ },
+ {
+  "id": "finqa_IPG/2009/page_85.pdf-3-114",
+  "dataset": "finqa",
+  "question": "what percentage of amounts expensed in 2009 came from discretionary company contributions?",
+  "gold": 10.82621,
+  "gold_str": "10.83%",
+  "answer": 10.826210826210826,
+  "code_success": true,
+  "elapsed": 2.07,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 1173,
+   "completion_tokens": 76,
+   "total_tokens": 1249
+  }
+ },
+ {
+  "id": "finqa_PNC/2009/page_46.pdf-2-25",
+  "dataset": "finqa",
+  "question": "share of total securities rated bbb/baa or below changed by how many percentage point between 2008 and 2009?",
+  "gold": -1.0,
+  "gold_str": "-1",
+  "answer": -1.0,
+  "code_success": true,
+  "elapsed": 2.67,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 1296,
+   "completion_tokens": 163,
+   "total_tokens": 1459
+  }
+ },
+ {
+  "id": "finqa_HWM/2017/page_41.pdf-2-769",
+  "dataset": "finqa",
+  "question": "considering the second quarter of 2017 , what is the average sale price per share of the company 2019s common stock?",
+  "gold": 25.205,
+  "gold_str": "25.20",
+  "answer": 25.205,
+  "code_success": true,
+  "elapsed": 2.61,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 1014,
+   "completion_tokens": 130,
+   "total_tokens": 1144
+  }
+ },
+ {
+  "id": "finqa_RSG/2015/page_126.pdf-1-283",
+  "dataset": "finqa",
+  "question": "as of december 31 , 2015 what was the percentage decline in the gross unrecognized tax benefits from 2014 to 2015",
+  "gold": -0.32953,
+  "gold_str": "-32.9%",
+  "answer": 34.72222222222222,
+  "code_success": true,
+  "elapsed": 3.39,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 926,
+   "completion_tokens": 238,
+   "total_tokens": 1164
+  }
+ },
+ {
+  "id": "finqa_ANSS/2013/page_55.pdf-1-252",
+  "dataset": "finqa",
+  "question": "as of december 312013 what was the percent of the total contractual obligations global headquarters operating leases",
+  "gold": 0.47317,
+  "gold_str": "47.3%",
+  "answer": 47.316566921506904,
+  "code_success": true,
+  "elapsed": 2.87,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 842,
+   "completion_tokens": 157,
+   "total_tokens": 999
+  }
+ },
+ {
+  "id": "finqa_UNP/2013/page_54.pdf-2-229",
+  "dataset": "finqa",
+  "question": "in 2013 what was the percent of the total operating revenues from mexico",
+  "gold": 0.0001,
+  "gold_str": "9.6%",
+  "answer": 9.561535309383965,
+  "code_success": true,
+  "elapsed": 3.74,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 978,
+   "completion_tokens": 328,
+   "total_tokens": 1306
+  }
+ },
+ {
+  "id": "finqa_PNC/2015/page_159.pdf-2-142",
+  "dataset": "finqa",
+  "question": "for 2015 and 2014 , what was the average in millions for provision recapture for purchased impaired loans?",
+  "gold": 86.5,
+  "gold_str": "86.5",
+  "answer": 86.5,
+  "code_success": true,
+  "elapsed": 1.7,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 648,
+   "completion_tokens": 72,
+   "total_tokens": 720
+  }
+ },
+ {
+  "id": "finqa_MRO/2007/page_134.pdf-4-764",
+  "dataset": "finqa",
+  "question": "by how much did the expected annual dividends per share increase from 2005 to 2007?",
+  "gold": 0.45455,
+  "gold_str": "45.5%",
+  "answer": 0.29999999999999993,
+  "code_success": true,
+  "elapsed": 2.6,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 1276,
+   "completion_tokens": 143,
+   "total_tokens": 1419
+  }
+ },
+ {
+  "id": "finqa_PM/2018/page_24.pdf-2-104",
+  "dataset": "finqa",
+  "question": "what was the difference in percentage return for pmi common stock compared to the s&p 500 index for the five years ended 2018?",
+  "gold": 0.538,
+  "gold_str": "53.8%",
+  "answer": -53.80000000000001,
+  "code_success": true,
+  "elapsed": 2.98,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 683,
+   "completion_tokens": 255,
+   "total_tokens": 938
+  }
+ },
+ {
+  "id": "finqa_LMT/2006/page_90.pdf-2-701",
+  "dataset": "finqa",
+  "question": "what was the percentage change in the rental expense under operating leases from 2004 to 2005",
+  "gold": 0.01887,
+  "gold_str": "1.9%",
+  "answer": 1.8867924528301887,
+  "code_success": true,
+  "elapsed": 2.28,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 1080,
+   "completion_tokens": 74,
+   "total_tokens": 1154
+  }
+ },
+ {
+  "id": "finqa_AWK/2013/page_132.pdf-1-768",
+  "dataset": "finqa",
+  "question": "based on the information provided what is the ratio of the post retirement benefit obligation to the service and interest one-point percentage increase",
+  "gold": 9.80562,
+  "gold_str": "9.81",
+  "answer": 9.805619655219221,
+  "code_success": true,
+  "elapsed": 2.55,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 508,
+   "completion_tokens": 136,
+   "total_tokens": 644
+  }
+ },
+ {
+  "id": "financemath_test-238",
+  "dataset": "financemath",
+  "question": "The current trading price of ABC shares is $50. A 1-year put option on these shares, with an exercise price of $50, is valued at $2.08. Given a continuously compounded risk-free rate of 4%, what would be the value of a call option that has the same exercise price and date?",
+  "gold": 4.041,
+  "gold_str": "4.041",
+  "answer": 4.040528042383841,
+  "code_success": true,
+  "elapsed": 2.15,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 179,
+   "completion_tokens": 136,
+   "total_tokens": 315
+  }
+ },
+ {
+  "id": "financemath_test-517",
+  "dataset": "financemath",
+  "question": "If Orion Enterprises recently released deferred coupon bonds of $100 par value that will not make any coupon payments for the following four years, and will then offer regular yearly coupon payments at an 8% rate until the end of their 10-year maturity period, and these bonds are currently valued at $87.00, what is the yield to maturity?",
+  "gold": 5.99,
+  "gold_str": "5.99",
+  "answer": 0.05999909629465938,
+  "code_success": true,
+  "elapsed": 9.14,
+  "tokens": {
+   "n_calls": 3,
+   "prompt_tokens": 640,
+   "completion_tokens": 874,
+   "total_tokens": 1514
+  }
+ },
+ {
+  "id": "financemath_test-616",
+  "dataset": "financemath",
+  "question": "A researcher collected the following data from a corporation's 2010 financial reports (in $ millions): In 2010, the corporation declared and dispersed cash dividends of $10 million, and logged a depreciation expense of $25 million. The corporation classifies dividends paid as a financing activity. What was the corporation’s 2010 operational cash flow (in $ millions)?",
+  "gold": 45.0,
+  "gold_str": "45.0",
+  "answer": 45.0,
+  "code_success": true,
+  "elapsed": 3.47,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 269,
+   "completion_tokens": 305,
+   "total_tokens": 574
+  }
+ },
+ {
+  "id": "financemath_test-27",
+  "dataset": "financemath",
+  "question": "The fund overseen by John displays the following returns in year1,2,3: What will be the time-weighted rate of return?",
+  "gold": 0.059,
+  "gold_str": "0.059",
+  "answer": 0.18776000000000015,
+  "code_success": true,
+  "elapsed": 2.03,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 200,
+   "completion_tokens": 86,
+   "total_tokens": 286
+  }
+ },
+ {
+  "id": "financemath_test-574",
+  "dataset": "financemath",
+  "question": "The fund managed by John displays the following returns for the first three years: What will the time-weighted rate of return be?",
+  "gold": 5.512,
+  "gold_str": "5.512",
+  "answer": 0.17463499999999987,
+  "code_success": true,
+  "elapsed": 1.56,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 190,
+   "completion_tokens": 52,
+   "total_tokens": 242
+  }
+ },
+ {
+  "id": "financemath_test-203",
+  "dataset": "financemath",
+  "question": "What is the price of goods sold in 2015 employing the FIFO technique for a business that usually uses the LIFO strategy, as stated in pounds sterling?",
+  "gold": 49080.0,
+  "gold_str": "49080.0",
+  "answer": 49080.0,
+  "code_success": true,
+  "elapsed": 2.59,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 212,
+   "completion_tokens": 134,
+   "total_tokens": 346
+  }
+ },
+ {
+  "id": "financemath_test-733",
+  "dataset": "financemath",
+  "question": "The 4-year spot rate is 9.45%, and the 1-year spot rate is 8.528%. What would be the 3-year forward rate starting a year from now?",
+  "gold": 9.759,
+  "gold_str": "9.759",
+  "answer": 0.09759070693053085,
+  "code_success": true,
+  "elapsed": 2.07,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 153,
+   "completion_tokens": 134,
+   "total_tokens": 287
+  }
+ },
+ {
+  "id": "financemath_test-665",
+  "dataset": "financemath",
+  "question": "What is the conversion price of the bond in Exhibit 3, which was issued by Pro Star as a convertible bond, according to the exhibit below?",
+  "gold": 32.258,
+  "gold_str": "32.258",
+  "answer": 32.25806451612903,
+  "code_success": true,
+  "elapsed": 1.84,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 221,
+   "completion_tokens": 55,
+   "total_tokens": 276
+  }
+ },
+ {
+  "id": "financemath_test-718",
+  "dataset": "financemath",
+  "question": "An investor bought 200 stocks of a company that doesn't pay dividends on margin with a cost of $50 each share. The leverage ratio stands at 2.5. Half a year later, the investor offloads these stocks at a price of $60 each share. If we disregard the interest paid on the borrowed money and the transaction expenses, what was the six-month period return for the investor?",
+  "gold": 50.0,
+  "gold_str": "50.0",
+  "answer": 0.5,
+  "code_success": true,
+  "elapsed": 2.85,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 195,
+   "completion_tokens": 163,
+   "total_tokens": 358
+  }
+ },
+ {
+  "id": "financemath_test-558",
+  "dataset": "financemath",
+  "question": "An investment manager achieved a return rate of 15.5% on a portfolio with a beta of 1.2. If the risk-less return rate is 2.5% and the market return stands at 11.8%, what does Jensen's alpha for the portfolio amount to?",
+  "gold": 0.018,
+  "gold_str": "0.018",
+  "answer": 1.8399999999999999,
+  "code_success": true,
+  "elapsed": 2.71,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 172,
+   "completion_tokens": 177,
+   "total_tokens": 349
+  }
+ },
+ {
+  "id": "financemath_test-429",
+  "dataset": "financemath",
+  "question": "Imagine a piece of art is made and bought in 2010 for £5,000. The costs for creating this piece of art came to £2,000. Based on the sum-of-value-added technique for GDP calculation, what is the value added by the final process of making the artwork?",
+  "gold": 3000.0,
+  "gold_str": "3000.0",
+  "answer": 3000.0,
+  "code_success": true,
+  "elapsed": 2.17,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 173,
+   "completion_tokens": 67,
+   "total_tokens": 240
+  }
+ },
+ {
+  "id": "financemath_test-225",
+  "dataset": "financemath",
+  "question": "What's the chance of a pupil correctly answering less than two questions on a multiple-choice test that has four choices for a total of six questions, by just guessing?",
+  "gold": 53.394,
+  "gold_str": "53.394",
+  "answer": 0.533935546875,
+  "code_success": true,
+  "elapsed": 2.95,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 146,
+   "completion_tokens": 76,
+   "total_tokens": 222
+  }
+ }
+]

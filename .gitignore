@@ -1,0 +1,6 @@
+# 敏感信息（请勿提交）
+.env
+
+# Python 缓存
+__pycache__/
+*.pyc

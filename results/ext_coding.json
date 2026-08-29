@@ -1,0 +1,122 @@
+[
+ {
+  "id": "coding_gen_1",
+  "type": "generate",
+  "success": true,
+  "code_exec_success": true,
+  "repaired_after_error": false,
+  "n_attempts": 1,
+  "elapsed": 4.47,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 202,
+   "completion_tokens": 114,
+   "total_tokens": 316
+  },
+  "task": "读取数据文件 D:\\暑期作业\\实验12\\data\\sample_data\\示例股票日收盘价.csv（列为：日期,收盘价），计算该股票的日收益率序列，并输出日收益率的标准差（日波动率）。",
+  "code": "import pandas as pd\n\n# 读取数据\ndf = pd.read_csv(r'D:\\暑期作业\\实验12\\data\\sample_data\\示例股票日收盘价.csv')\n\n# 计算日收益率（百分比变化）\ndf['日收益率'] = df['收盘价'].pct_change()\n\n# 计算日收益率标准差（日波动率）\ndaily_volatility = df['日收益率'].std()\n\n# 输出结果\nprint(f\"日收益率标准差（日波动率）: {daily_volatility:.6f}\")",
+  "stdout": "日收益率标准差（日波动率）: 0.018403\n",
+  "explanation": null,
+  "error": null
+ },
+ {
+  "id": "coding_gen_2",
+  "type": "generate",
+  "success": true,
+  "code_exec_success": true,
+  "repaired_after_error": true,
+  "n_attempts": 2,
+  "elapsed": 6.27,
+  "tokens": {
+   "n_calls": 2,
+   "prompt_tokens": 754,
+   "completion_tokens": 631,
+   "total_tokens": 1385
+  },
+  "task": "读取数据文件 D:\\暑期作业\\实验12\\data\\sample_data\\示例公司财务数据.xlsx（Sheet 为'财务数据'，列为：年份,营业收入,...），计算 2022 年和 2023 年的营业收入增长率，并分别输出（保留4位小数）。",
+  "code": "import pandas as pd\n\n# 读取数据\nfile_path = r'D:\\暑期作业\\实验12\\data\\sample_data\\示例公司财务数据.xlsx'\n\n# 先查看所有工作表名称\nxls = pd.ExcelFile(file_path)\nprint(\"可用的工作表:\", xls.sheet_names)\n\n# 使用第一个工作表（或根据实际名称调整）\nsheet_name = xls.sheet_names[0]\ndf = pd.read_excel(file_path, sheet_name=sheet_name)\n\n# 确保年份列为数值类型\ndf['年份'] = pd.to_numeric(df['年份'], errors='coerce')\n\n# 按年份排序\ndf = df.sort_values('年份').reset_index(drop=True)\n\n# 计算营业收入增长率\ngrowth_rates = {}\nfor year in [2022, 2023]:\n    current = df.loc[df['年份'] == year, '营业收入']\n    previous = df.loc[df['年份'] == year - 1, '营业收入']\n    if not current.empty and not previous.empty:\n        current_val = current.iloc[0]\n        previous_val = previous.iloc[0]\n        if previous_val != 0:\n            growth_rate = (current_val - previous_val) / previous_val\n        else:\n            growth_rate = float('nan')\n        growth_rates[year] = growth_rate\n    else:\n        growth_rates[year] = float('nan')\n\n# 输出结果，保留4位小数\nfor year in [2022, 2023]:\n    print(f\"{year}年营业收入增长率: {growth_rates[year]:.4f}\")",
+  "stdout": "可用的工作表: ['Sheet1']\n2022年营业收入增长率: 0.2093\n2023年营业收入增长率: 0.1487\n",
+  "explanation": null,
+  "error": null
+ },
+ {
+  "id": "coding_explain_1",
+  "type": "explain",
+  "success": true,
+  "code_exec_success": null,
+  "repaired_after_error": false,
+  "n_attempts": 0,
+  "elapsed": 5.69,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 111,
+   "completion_tokens": 718,
+   "total_tokens": 829
+  },
+  "task": "请解释下面这段代码的功能",
+  "code": "import pandas as pd\ndf = pd.read_csv('data.csv')\ndf['ret'] = df['close'].pct_change()\nprint(df['ret'].std() * (252**0.5))",
+  "stdout": "",
+  "explanation": "这段代码的功能是**计算股票或金融资产年化波动率**。下面逐行解释：\n\n---\n\n### 1. 导入库\n```python\nimport pandas as pd\n```\n- `pandas` 是 Python 中用于数据处理和分析的核心库，尤其擅长处理表格型数据（如 CSV 文件）。\n\n---\n\n### 2. 读取数据\n```python\ndf = pd.read_csv('data.csv')\n```\n- 从当前目录下的 `data.csv` 文件读取数据，并存储为 DataFrame 对象 `df`。\n- 假设该 CSV 文件包含至少一列名为 `close` 的数据（通常是每日收盘价）。\n\n---\n\n### 3. 计算日收益率\n```python\ndf['ret'] = df['close'].pct_change()\n```\n- `pct_change()` 计算每个元素相对于前一个元素的百分比变化，即：\n  \\[\n  \\text{ret}_t = \\frac{\\text{close}_t - \\text{close}_{t-1}}{\\text{close}_{t-1}}\n  \\]\n- 结果存储在新列 `ret` 中，表示每日收益率。\n- 注意：第一行的 `ret` 值为 `NaN`（因为没有前一日数据），后续计算会自动忽略。\n\n---\n\n### 4. 计算年化波动率\n```python\nprint(df['ret'].std() * (252**0.5))\n```\n- `df['ret'].std()`：计算日收益率的标准差，即**日波动率**。\n- `252**0.5`：252 是每年交易日数量（美股常用），开平方后约为 15.87，用于将日波动率转换为年化波动率。\n- 最终结果 = 日波动率 × √252，即**年化波动率**（以小数形式表示，如 0.25 表示 25%）。\n\n---\n\n### 关键变量与数据结构\n- `df`：DataFrame，二维表格结构，包含原始数据及新增的 `ret` 列。\n- `df['close']`：Series，收盘价序列。\n- `df['ret']`：Series，收益率序列。\n\n---\n\n### 算法与数学原理\n- 使用**历史波动率法**：假设收益率独立同分布，年化波动率 = 日波动率 × √交易日数。\n- 标准差公式：`std()` 默认使用样本标准差（分母为 n-1），适合金融数据。\n\n---\n\n### 可能存在的问题与改进建议\n1. **数据缺失或异常**：若 `close` 列存在缺失值，`pct_change()` 会产生更多 `NaN`，建议先清洗数据（如 `dropna()`）。\n2. **交易日数量**：252 是美股常用值，但 A 股通常用 244 或 250，应根据市场调整。\n3. **收益率分布假设**：该方法假设收益率正态分布且独立，实际金融数据常存在厚尾和自相关性，可考虑更复杂的模型（如 GARCH）。\n4. **未处理价格调整**：若数据包含分红、拆股，应使用复权价格，否则收益率计算不准确。\n5. **输出格式**：建议将结果乘以 100 以百分比显示，或使用 `round()` 保留小数。\n\n---\n\n### 总结\n这段代码简洁地实现了从原始价格数据到年化波动率的计算，是金融风险分析中的基础操作。",
+  "error": null
+ },
+ {
+  "id": "coding_explain_2",
+  "type": "explain",
+  "success": true,
+  "code_exec_success": null,
+  "repaired_after_error": false,
+  "n_attempts": 0,
+  "elapsed": 7.17,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 136,
+   "completion_tokens": 981,
+   "total_tokens": 1117
+  },
+  "task": "请解释下面这段代码的功能",
+  "code": "import numpy as np\ndef sharpe(returns, rf=0.0):\n    excess = returns - rf/252\n    return np.mean(excess)/np.std(excess)*np.sqrt(252)\nprint(sharpe(np.array([0.01,-0.005,0.02,0.008])))",
+  "stdout": "",
+  "explanation": "这段代码定义了一个计算**夏普比率（Sharpe Ratio）**的函数，并演示了如何使用它。下面我将逐部分解释：\n\n---\n\n## 1. 导入库\n```python\nimport numpy as np\n```\n- 导入NumPy库，用于数值计算和数组操作。\n\n---\n\n## 2. 定义夏普比率函数\n```python\ndef sharpe(returns, rf=0.0):\n```\n- 函数名：`sharpe`\n- 参数：\n  - `returns`：一个数组，包含每日收益率（例如0.01表示1%的日收益）\n  - `rf`：无风险利率（年化），默认值为0.0\n\n---\n\n## 3. 计算超额收益\n```python\nexcess = returns - rf/252\n```\n- `rf/252`：将年化无风险利率转换为**日无风险利率**（假设一年有252个交易日）\n- `excess`：每日**超额收益**，即每日收益率减去日无风险利率\n\n---\n\n## 4. 计算夏普比率\n```python\nreturn np.mean(excess)/np.std(excess)*np.sqrt(252)\n```\n- `np.mean(excess)`：超额收益的**平均值**（日平均超额收益）\n- `np.std(excess)`：超额收益的**标准差**（衡量波动性）\n- `np.sqrt(252)`：将日夏普比率**年化**（乘以√252，因为年化波动率 = 日波动率 × √252）\n- 最终返回**年化夏普比率**\n\n---\n\n## 5. 测试代码\n```python\nprint(sharpe(np.array([0.01,-0.005,0.02,0.008])))\n```\n- 输入一个包含4个日收益率的数组：1%、-0.5%、2%、0.8%\n- 无风险利率默认为0\n- 输出计算结果\n\n---\n\n## 关键概念说明\n\n| 概念 | 说明 |\n|------|------|\n| **夏普比率** | 衡量投资组合每承担一单位风险所获得的超额回报，数值越高越好 |\n| **超额收益** | 实际收益减去无风险收益，代表投资者因承担风险而获得的额外补偿 |\n| **年化** | 将日频数据转换为年频，便于不同频率数据的比较 |\n\n---\n\n## 可能存在的问题与改进建议\n\n1. **标准差为零的情况**：如果所有收益率相同，`np.std(excess)` 为0，会导致除零错误。建议添加异常处理：\n   ```python\n   if np.std(excess) == 0:\n       return np.nan  # 或返回0\n   ```\n\n2. **样本标准差 vs 总体标准差**：`np.std()` 默认使用总体标准差（除以n），而金融中通常使用样本标准差（除以n-1）。建议使用 `np.std(excess, ddof=1)`。\n\n3. **无风险利率的转换**：`rf/252` 假设无风险利率是年化的，但实际中可能使用连续复利或不同天数（如365天）。应根据实际情况调整。\n\n4. **输入验证**：建议检查 `returns` 是否为非空数组，以及是否包含NaN值。\n\n5. **可读性**：可以将 `252` 定义为常量，便于修改。\n\n---\n\n## 改进后的代码示例\n```python\nimport numpy as np\n\ndef sharpe(returns, rf=0.0, periods=252):\n    \"\"\"\n    计算年化夏普比率\n    :param returns: 日收益率数组\n    :param rf: 年化无风险利率\n    :param periods: 年化周期数（默认252个交易日）\n    \"\"\"\n    returns = np.asarray(returns)\n    if len(returns) == 0:\n        raise ValueError(\"returns不能为空\")\n    \n    excess = returns - rf/periods\n    std = np.std(excess, ddof=1)  # 使用样本标准差\n    if std == 0:\n        return np.nan  # 无波动时返回NaN\n    \n    return np.mean(excess) / std * np.sqrt(periods)\n\n# 测试\nprint(sharpe(np.array([0.01, -0.005, 0.02, 0.008])))\n```\n\n---\n\n## 总结\n这段代码的核心功能是**计算投资组合的夏普比率**，通过将日收益率减去日无风险利率，计算超额收益的均值与标准差之比，并年化处理。代码简洁但存在一些边界情况处理不足的问题，建议根据实际应用场景进行完善。",
+  "error": null
+ },
+ {
+  "id": "coding_fix_1",
+  "type": "fix",
+  "success": true,
+  "code_exec_success": true,
+  "repaired_after_error": true,
+  "n_attempts": 2,
+  "elapsed": 2.82,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 307,
+   "completion_tokens": 61,
+   "total_tokens": 368
+  },
+  "task": "修复下面代码中的错误，使其能够正确计算并输出。数据文件为 D:\\暑期作业\\实验12\\data\\sample_data\\示例公司财务数据.xlsx，列名：年份,营业收入,营业成本,毛利,净利润,总资产,总负债,所有者权益。",
+  "code": "import pandas as pd\n\ndf = pd.read_excel(r'D:\\暑期作业\\实验12\\data\\sample_data\\示例公司财务数据.xlsx')\ndf['毛利率'] = df['毛利'] / df['营业收入']\nprint(df[['年份', '毛利率']])",
+  "stdout": "     年份       毛利率\n0  2021  0.333333\n1  2022  0.342949\n2  2023  0.349888\n",
+  "explanation": null,
+  "error": null
+ },
+ {
+  "id": "coding_fix_2",
+  "type": "fix",
+  "success": true,
+  "code_exec_success": true,
+  "repaired_after_error": true,
+  "n_attempts": 2,
+  "elapsed": 1.68,
+  "tokens": {
+   "n_calls": 1,
+   "prompt_tokens": 268,
+   "completion_tokens": 63,
+   "total_tokens": 331
+  },
+  "task": "修复下面代码中的错误，使其能够正确运行并输出结果。",
+  "code": "import numpy as np\na = np.array([1, 2, 3])\nb = np.array([4, 5, 6])\nprint(a @ b)\nc = np.dot(a, b)\nprint(\"dot =\", c)\nprint(\"sum =\", a.sum())",
+  "stdout": "32\ndot = 32\nsum = 6\n",
+  "explanation": null,
+  "error": null
+ }
+]

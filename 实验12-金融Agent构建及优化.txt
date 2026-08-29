@@ -1,0 +1,256 @@
+AI开发技术-实验12-金融Agent构建及优化
+1. 实验目的
+1）了解 Financial Agent 的基本组成和工作方式，理解大语言模型、Agent、工具调用、文档检索、代码执行、金融数值分析和数学建模等技术在金融任务中的应用。
+2）掌握面向金融任务构建模块化 Agent 系统的方法，实现 Coding Agent、金融文档问答、金融数据分析和数学建模等功能。
+3）掌握利用 Python 完成金融数据读取、数值计算、统计分析、数据可视化和模型求解的方法，并通过 Agent 完成自然语言驱动的分析任务。
+4）掌握金融 PDF 文档的解析、检索、问答和证据定位流程，实现面向年报、财务报告等金融文档的信息查询与分析。
+5）了解金融 Code Agent 的基本方法，参考 MoCA-Agent 的“金融问题理解—证据/公式判断—Python 生成—代码执行—结果校验”流程，理解代码执行在金融数值推理中的作用。
+6）通过主对比实验、消融实验、扩展能力实验、效率实验和定性分析，对 Financial Agent 的任务完成效果进行系统评价。
+
+2. 实验内容
+2.1 Financial Agent 总体构建
+构建一个面向金融任务的 Financial Agent 系统，并提供 Web 或桌面交互界面。系统采用模块化设计，用户进入系统后可根据任务类型选择相应功能。
+系统主要包括四个功能模块：
+- Coding Agent；
+- 金融文档问答；
+- 金融数据分析；
+- 数学建模。
+系统应能够接收用户自然语言任务，调用相应模块和工具完成处理，并展示任务执行过程、生成代码、运行结果、检索证据、分析结果和可视化结果。
+
+2.2 Coding Agent
+实现能够根据用户任务生成、理解、修改和执行 Python 代码的 Coding Agent。
+主要功能包括：
+1）理解代码生成、代码解释、数据处理和程序修改任务；
+2）根据自然语言任务生成 Python 代码；
+3）调用 Python 环境执行代码；
+4）支持 CSV、Excel 等数据文件的读取和处理；
+5）获取代码执行结果和错误信息；
+6）在代码运行失败时，根据错误反馈修改代码并重新执行；
+7）展示生成代码、执行日志、数据结果和图表。
+
+2.3 金融文档问答
+实现面向金融 PDF 文档的解析、检索和问答功能。
+选择上市公司年报、财务报告、公告等公开金融文档作为实验材料，完成：
+1）PDF 文档上传与解析；
+2）文本和表格内容提取；
+3）文档切分和索引建立；
+4）根据用户问题检索相关证据；
+5）结合检索结果调用 LLM 生成回答；
+6）展示与回答相关的原始文档内容、页码或来源信息；
+7）支持事实查询、财务指标提取、内容总结和表格问答。
+
+2.4 金融数据分析
+系统能够读取 CSV 或 Excel 格式的金融数据，根据用户提出的分析目标调用 Python 完成金融数值计算、统计分析和数据可视化。
+主要包括：
+1）金融指标计算：营业收入增长率、净利润增长率、毛利率、净利率、ROA、ROE、资产负债率、收益率、波动率等；
+2）数据处理：缺失值处理、异常值识别、字段转换和数据筛选；
+3）统计分析：描述性统计、趋势分析、相关性分析和数据比较；
+4）结果可视化：折线图、柱状图、散点图等；
+5）结果解释：结合金融背景解释数值变化和分析结果。
+
+2.5 数学建模
+实现面向金融或一般数据分析问题的数学建模功能。
+系统应能够根据题目和数据完成：
+1）问题理解与目标分析；
+2）变量定义与必要假设；
+3）数学模型或机器学习方法选择；
+4）模型建立与求解方案设计；
+5）Python 代码生成与执行；
+6）模型结果评价；
+7）可视化与结论解释。
+可选择回归分析、时间序列预测、聚类分析、综合评价、投资组合优化等方法进行实验。
+
+2.6 Baseline：MoCA-Agent
+选择 MoCA-Agent（MoCA-Fin）作为主要对比方法。
+MoCA-Agent 是面向金融数值推理和表格推理的 Code Agent，其主要流程包括：
+金融问题与文本/表格输入 → Claim 分解 → Specialist Agents（Extractor、Formula、Accountant、Skeptic）判断 → Claim 筛选 → Python 程序生成 → 沙箱执行 → 结果验证 → 必要时进行代码修复 → 输出最终答案。
+本实验不要求 MoCA-Agent 覆盖 Financial Agent 的全部功能，仅在双方共同支持的任务上进行公平比较。
+主要对比范围：
+- 金融文档/表格问答；
+- 金融数值推理与计算；
+- 基于代码执行的金融问题求解。
+Coding Agent 的一般代码理解/修改能力、完整 PDF 问答以及数学建模作为 Financial Agent 的扩展能力单独进行测试。
+
+2.7 主对比实验
+2.7.1 测试数据
+主对比使用公开金融任务数据集，优先选择：
+- FinQA：测试金融文本、表格理解和数值问答能力；
+- FinanceMath：测试金融公式、多步计算和代码辅助求解能力。
+建议实验规模：
+- FinQA：20 题；
+- FinanceMath：20 题；
+- 共 40 题。
+测试题目固定，并记录题目编号，保证 MoCA-Agent 与 Financial Agent 使用完全相同的输入。
+对比实验中，MoCA-Agent 与 Financial Agent 分别运行各自代码，通过统一 Benchmark 输入接口读取同一批 FinQA / FinanceMath 样本，分别保存预测结果后再使用统一评价脚本进行统计，不要求两个系统集成到同一程序中。
+
+2.7.2 公平性设置
+主对比实验中：
+1）MoCA-Agent 和 Financial Agent 使用相同的大语言模型；
+2）保持 temperature、最大输出长度等主要模型参数一致；
+3）使用相同测试题和相同输入上下文；
+4）采用相同答案判定方式；
+5）重复实验时固定测试集与配置。
+
+2.7.3 评价指标
+记录以下指标：
+1）Answer Accuracy：最终答案正确率；
+2）Numerical Accuracy：数值答案正确率；
+3）Code Execution Success Rate：生成代码能够无语法错误和运行错误完成执行的比例；
+4）Task Success Rate：任务完整完成的比例；
+5）Average Time：单个任务平均运行时间；
+6）Token Consumption：平均输入、输出及总 Token 消耗。
+主对比结果可整理为：
+| Method | FinQA Accuracy | FinanceMath Accuracy | Code Execution Success | Task Success Rate | Avg. Time | Avg. Tokens |
+|---|---:|---:|---:|---:|---:|---:|
+| MoCA-Agent |  |  |  |  |  |  |
+| Financial Agent |  |  |  |  |  |  |
+
+2.8 消融实验
+为分析 Financial Agent 中不同设计对任务效果的影响，本实验设置两组实现成本较低、且关注点不同的消融实验：任务专用 Prompt 消融和代码执行消融。两组实验均不改变系统主体结构，只调整对应功能配置。
+2.8.1 w/o Task-specific Prompt
+完整 Financial Agent 针对不同任务采用不同的任务专用 Prompt。例如，金融文档问答模块重点约束证据提取、表格信息读取和来源定位；金融数据分析模块重点约束金融公式、单位、计算过程和结果解释。
+消融版本取消不同模块的任务专用 Prompt，统一使用普通金融助手 Prompt，其余模型、测试数据、工具和执行流程保持不变。
+目的：验证针对不同金融任务设计专用 Prompt 是否能够提高金融文档/表格问答和金融数值分析任务的正确率。
+实现方式：仅替换系统 Prompt，不修改 Agent 主体流程和工具调用代码。
+
+2.8.2 w/o Code Execution
+完整系统在需要数值计算时允许生成 Python 代码，并调用 Python 环境执行代码，根据实际运行结果得到最终答案。
+消融版本关闭 Python 执行功能，仅由大语言模型根据题目内容直接推理和计算，并输出最终答案。
+目的：验证显式代码执行机制对金融数值推理和计算任务准确率的影响。
+实现方式：增加“是否允许执行 Python”的功能开关。关闭后，保留问题理解与回答生成流程，但不调用代码执行环境。
+
+2.8.3 消融实验设置
+为控制实验工作量，消融实验从主测试集中固定选择 20—30 道题，以包含金融数值计算和多步推理的题目为主，例如：
+- FinQA：10—15 题；
+- FinanceMath：10—15 题。
+所有实验版本使用相同测试题、相同大语言模型、相同模型参数和相同输入内容。
+重点记录以下指标：
+1）Answer Accuracy：最终答案正确率；
+2）Numerical Accuracy：数值结果正确率；
+3）Task Success Rate：任务完整完成的比例；
+4）Average Time：平均运行时间；
+5）Token Consumption：平均 Token 消耗。
+
+结果可整理为：
+| Method | FinQA Acc. | FinanceMath Acc. | Overall Acc. | Task Success Rate | Avg. Time | Avg. Tokens |
+|---|---:|---:|---:|---:|---:|---:|
+| w/o Task-specific Prompt |  |  |  |  |  |  |
+| w/o Code Execution |  |  |  |  |  |  |
+| **Full Financial Agent** |  |  |  |  |  |  |
+通过两组消融实验，分别分析任务专业化 Prompt 和 Python 代码执行机制对 Financial Agent 任务效果的作用。
+
+2.9 Financial Agent 扩展能力实验
+由于 MoCA-Agent 主要面向金融文本、表格和数值推理任务，不具备完整的通用 Coding、端到端金融 PDF 问答和开放式数学建模能力，因此本节仅针对所构建的 Financial Agent 进行独立功能测试，不与 MoCA-Agent 进行直接对比。
+2.9.1 Coding Agent 测试
+设计 6 个 Coding 任务：
+- 代码生成 2 个；
+- 代码理解 2 个；
+- Bug 修复 2 个。
+记录：
+- Code Execution Success Rate；
+- Task Success Rate；
+- 是否经过执行反馈完成修复；
+- 运行时间和 Token 消耗。
+
+2.9.2 端到端金融 PDF 问答
+选择 2—3 份公开金融 PDF 文档，每份设计 3—5 个问题。
+完整执行：
+PDF 上传 → 解析 → 切分 → 检索 → 证据定位 → LLM 回答。
+评价：
+- Answer Accuracy；
+- Evidence Recall / Evidence Hit；
+- 是否能够给出正确来源或页码。
+
+2.9.3 数学建模测试
+选择 3—4 个建模任务，例如：
+- 信用风险评价；
+- 投资组合优化；
+- 收益预测；
+- 企业综合评价。
+从以下方面进行评价：
+- 问题理解；
+- 模型选择合理性；
+- 模型建立正确性；
+- 代码可执行性；
+- 结果和解释完整性。
+可采用 100 分制人工评分，每项 20 分。
+
+2.10 定性实验与案例分析
+选择 4 个代表性案例进行展示。
+Case 1：金融文档/表格问答，对比 MoCA-Agent 和 Financial Agent 的答案及证据。
+Case 2：复杂金融数值计算，对比双方的公式选择、计算过程和最终结果。
+Case 3：代码执行与错误修复，展示 Financial Agent 在代码运行失败时获取错误信息、修改代码并再次执行的典型过程。该案例用于定性展示系统的执行反馈能力，不作为正式消融实验。
+Case 4：数学建模，展示 Financial Agent 从问题理解、模型选择、代码生成到结果分析的完整过程。
+同时分析典型失败案例，并归纳失败原因，例如：
+- 问题理解错误；
+- 数据或证据提取错误；
+- 金融公式选择错误；
+- 代码生成错误；
+- 代码执行错误；
+- 模型选择不合理；
+- 最终答案与执行结果不一致。
+---
+
+ 3. 实验步骤
+1）准备实验环境，配置 Python、大语言模型 API、文档解析、数据分析和代码执行相关依赖。
+2）部署并验证 MoCA-Agent，完成单个金融表格计算任务的最小运行测试。
+3）准备 FinQA 和 FinanceMath 测试子集，固定题目编号和输入格式。
+4）完善 Financial Agent 的 Coding Agent、金融文档问答、金融数据分析和数学建模模块。
+5）统一 MoCA-Agent 与 Financial Agent 的模型、参数和测试输入。
+6）完成主对比实验，记录正确率、代码执行率、任务成功率、运行时间和 Token 消耗。
+7）完成两组消融实验，分析任务专用 Prompt 和代码执行机制的作用。
+8）完成 Coding、端到端 PDF 问答和数学建模扩展能力测试。
+9）选择代表性成功和失败案例进行定性分析。
+10）整理实验表格、系统截图、执行日志和可视化结果，完成实验报告与 PPT。
+
+4. 实验要求
+1）完成一个可以实际运行的 Financial Agent 系统，并提供 Web 或桌面交互界面。
+2）系统至少包含 Coding Agent、金融文档问答、金融数据分析和数学建模四项功能。
+3）Coding Agent 能够生成并执行 Python 代码，并支持基于运行错误进行修改和重新执行。
+4）金融文档问答支持 PDF 上传、解析、检索、问答和来源信息展示。
+5）金融数据分析支持 CSV 或 Excel 数据，能够完成金融指标计算、统计分析和结果可视化。
+6）数学建模模块能够完成问题分析、模型选择、代码求解和结果解释。
+7）完成 MoCA-Agent 与 Financial Agent 在共同任务上的对比实验。
+8）完成 Task-specific Prompt 和 Code Execution 两项消融实验。
+9）同时完成定量实验和定性案例分析，并记录运行时间和 Token 消耗。
+10）提交项目源代码、运行说明、测试数据、实验结果、实验报告和 PPT。
+
+5. 参考资料
+1）MoCA-Agent / MoCA-Fin  
+论文：MoCA-Agent: A Market-of-Claims Code Agent for Financial and Numerical Reasoning  
+论文：https://arxiv.org/abs/2606.11537  
+PDF：https://arxiv.org/pdf/2606.11537  
+代码：https://github.com/UBC-NLP/MoCA-Agent  
+用于参考金融数值推理、表格推理、Python 代码生成、代码执行、结果验证和修复机制。
+
+2）FinQA  
+论文：https://aclanthology.org/2021.emnlp-main.300/  
+项目主页：https://finqasite.github.io/  
+代码与数据：https://github.com/czyssrs/FinQA  
+用于金融文本、表格和多步数值问答测试。
+
+3）FinanceMath  
+论文：https://aclanthology.org/2024.acl-long.693/  
+项目主页：https://financemath-acl2024.github.io/  
+数据集：https://huggingface.co/datasets/yale-nlp/FinanceMath  
+用于金融数值推理、公式选择和代码辅助求解测试。
+
+4）文档解析与 RAG  
+LlamaIndex：https://github.com/run-llama/llama_index  
+LangChain：https://github.com/langchain-ai/langchain  
+用于 PDF 解析、文本切分、索引、检索和问答。
+
+5）金融数据分析  
+Pandas：https://github.com/pandas-dev/pandas  
+NumPy：https://github.com/numpy/numpy  
+Matplotlib：https://github.com/matplotlib/matplotlib  
+Scikit-learn：https://github.com/scikit-learn/scikit-learn  
+Statsmodels：https://github.com/statsmodels/statsmodels  
+用于数据读取、预处理、统计分析、数据可视化和数学建模。
+
+6）界面开发  
+Streamlit：https://github.com/streamlit/streamlit  
+FastAPI：https://github.com/fastapi/fastapi  
+React：https://github.com/facebook/react  
+Electron：https://github.com/electron/electron  
+用于 Financial Agent 的 Web 或桌面交互界面。
