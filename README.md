@@ -1,4 +1,4 @@
-# 实验12：金融Agent构建及优化
+# 金融Agent构建及优化
 
 本实验构建了一个面向金融任务的 **Financial Agent** 系统（含 Streamlit Web 界面），包含
 **Coding Agent、金融文档问答、金融数据分析、数学建模** 四个功能模块；同时复现了
